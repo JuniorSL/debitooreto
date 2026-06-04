@@ -3159,16 +3159,6 @@
             currentQuestionIndex = 0;
             currentPoints = 0;
 
-            //<<Jr
-            registrarEvento(
-                'inicio_cuestionario',
-                quizKey
-            );
-
-            currentCategoryKey = categoryKey;
-            currentQuizKey = quizKey;
-            //Jr>>
-
             // Actualizar el título del cuestionario en la pantalla de juego y resultados
             document.getElementById('currentQuizTitle').textContent = selectedQuizData.title.toUpperCase();
             document.getElementById('correctQuizTitle').textContent = selectedQuizData.title.toUpperCase();
