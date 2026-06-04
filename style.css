@@ -1,0 +1,637 @@
+/* Estilos Generales para simular una app */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centra la "pantalla del celular" */
+    align-items: center;
+    min-height: 100vh; /* Ocupa el alto completo de la ventana */
+    background-color: #222; /* Fondo oscuro para simular el exterior del celular */
+    overflow: hidden; /* Evita scroll en el body */
+    color: #fff;
+    font-size: 16px;
+}
+
+/* Contenedor principal de la "app" */
+.screen {
+    width: 100%;
+    max-width: 375px; /* Ancho típico de un celular */
+    height: 100vh; /* Alto típico de un celular */
+    max-height: 812px; /* Alto típico de un iPhone X/XS/11 Pro */
+    background: linear-gradient(180deg, #1a1a1a 0%, #333 100%); /* Fondo degradado oscuro */
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* Para que el contenido no se salga de los bordes redondeados */
+    position: relative;
+    display: none; /* Oculta todas las pantallas por defecto */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.screen.active {
+    display: flex; /* Muestra la pantalla activa */
+}
+
+/* Encabezados de la app */
+.header-app {
+    background: #000;
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px; /* Espacio para notch simulado */
+}
+
+.header-app .app-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.header-app h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #ff0000; /* Rojo vibrante */
+}
+
+.header-app p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #bbb;
+}
+
+.header-app-small {
+    background: #000;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10; /* Para que el menú no se oculte */
+    padding-top: 40px;
+}
+
+.header-app-small h3 {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.menu-icon {
+    font-size: 1.8em;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+}
+
+/* Contenido de la app */
+.content-app {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* Permite scroll si el contenido es largo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.content-app h2 {
+    color: #ff0000;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.explore-text {
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+/* Estilos de formulario (Registro) */
+.form-screen {
+    justify-content: flex-start;
+}
+.input-group {
+    width: 90%;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+.input-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #444;
+    color: #fff;
+    font-size: 1em;
+}
+.input-group input::placeholder {
+    color: #999;
+}
+
+.checkbox-group {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #ccc;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+}
+
+.checkbox-group label a {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.social-btn {
+    width: 90%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.social-btn.google { background-color: #4285F4; color: #fff; }
+.social-btn.apple { background-color: #000; color: #fff; border: 1px solid #666; }
+.social-btn.meta { background-color: #1877F2; color: #fff; }
+
+.login-link {
+    margin-top: 20px;
+    color: #ccc;
+}
+.login-link a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* Pie de página de la app (Navegación inferior) */
+.footer-app {
+    background: #000;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+}
+
+.footer-app button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 0.9em;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.footer-app button:hover {
+    color: #ff0000;
+}
+
+/* Pantalla de Récords */
+.records-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.record-item {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.record-item .record-number {
+    font-weight: bold;
+    color: #ff0000;
+    font-size: 1.2em;
+}
+
+.game-modes {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    margin-top: 30px;
+}
+
+.game-modes button {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.game-modes button:hover {
+    background-color: #cc0000;
+}
+
+.action-button {
+    background-color: #555;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #777;
+}
+
+/* Pantalla Repositorio */
+.repository-topics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.repository-topics button {
+    background-color: #444;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: left;
+}
+
+.repository-topics button:hover {
+    background-color: #ff0000;
+}
+
+.buy-fondo-button {
+    background-color: #007bff; /* Color azul para este botón */
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buy-fondo-button:hover {
+    background-color: #0056b3;
+}
+
+/* Pantalla Tienda */
+.shop-content {
+    padding: 0; /* Elimina padding para el banner */
+}
+
+.shop-banner {
+    background-color: #ffcc00; /* Color amarillo/naranja como en la imagen */
+    color: #000;
+    padding: 15px 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+.shop-content h3 {
+    text-align: left;
+    width: calc(100% - 40px); /* Ajusta por padding */
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.3em;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.shop-content .view-more {
+    font-size: 0.8em;
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.item-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 10px;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.shop-item {
+    background-color: #444;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.shop-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.shop-item p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #eee;
+}
+
+.shop-item span {
+    background-color: #ffcc00; /* Color de moneda */
+    color: #000;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+
+/* Pantalla de Juego (Pregunta) */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #000;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 40px;
+}
+
+.game-header .question-number {
+    background-color: #ff0000;
+    color: #fff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.game-header .points {
+    color: #0f0; /* Verde para puntos */
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.game-header .skip-button {
+    background-color: #555;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.game-header .skip-button:hover {
+    background-color: #777;
+}
+
+.question-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.question-area p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #eee;
+}
+
+.question-area .question-text {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.option-button {
+    width: 90%;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: left;
+}
+
+.option-button:hover {
+    background-color: #666;
+}
+
+.option-button.correct {
+    background-color: #00cc00; /* Verde para respuesta correcta */
+    color: #fff;
+}
+
+.option-button.wrong {
+    background-color: #cc0000; /* Rojo para respuesta incorrecta */
+    color: #fff;
+}
+
+.zorro-image {
+    width: 120px; /* Tamaño del zorro */
+    height: auto;
+    margin-top: 20px;
+}
+
+.next-question-button {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.next-question-button:hover {
+    background-color: #cc0000;
+}
+
+
+/* Pantalla GAME OVER */
+.game-over-content, .win-content {
+    justify-content: center;
+}
+
+.game-over-content h2, .win-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.game-over-content .message {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.game-over-content .details {
+    font-size: 1em;
+    color: #ccc;
+    margin-top: 5px;
+}
+
+.win-content .score {
+    font-size: 3em;
+    color: #0f0;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.win-content h3 {
+    font-size: 1.8em;
+    color: #ff0000;
+    margin-bottom: 10px;
+}
+
+.win-content .ranking-mode {
+    font-size: 1.2em;
+    color: #eee;
+    margin-bottom: 30px;
+}
+
+.win-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.win-actions .action-button {
+    background-color: #666; /* Diferente color para estos botones */
+    color: #fff;
+}
+.win-actions .action-button:hover {
+    background-color: #888;
+}
+
+.play-again {
+    background-color: #ff0000 !important; /* Rojo principal */
+    color: #fff !important;
+}
+
+
+/* Sidebar (Menú lateral) */
+.sidebar {
+    height: 100%;
+    width: 0; /* Oculto por defecto */
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+}
+
+.sidebar.active {
+    width: 250px; /* Ancho cuando está activo */
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 1.3em;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+    background-color: #333;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #aaa;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 480px) {
+    .screen {
+        width: 100%;
+        height: 100vh;
+        max-height: unset;
+        border-radius: 0;
+    }
+    body {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+}
