@@ -3102,10 +3102,7 @@
         // --- Funciones de Navegación de Pantalla ---
         function showScreen(screenId) {
             //<<Jr
-            registrarEvento(
-                'cambio_pantalla',
-                screenId
-            );
+    
             //Jr>>
             document.querySelectorAll('.screen').forEach(screen => {
                 screen.classList.remove('active');
